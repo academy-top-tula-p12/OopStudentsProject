@@ -47,6 +47,15 @@ class Group
 public:
     Group() : size{ 0 }, students{ nullptr } {}
 
+    Group(const Group& group)
+    {
+        this->size = group.size;
+        delete[]students;
+        students = new Student[size];
+        for (int i = 0; i < size; i++)
+            students[i] = group.students[i];
+    }
+
     int Size() { return size; }
     
     void Add(Student student)
